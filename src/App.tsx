@@ -1,7 +1,16 @@
-import { Header } from "./components/HeaderComponent/Header";
+import { Router, RouteComponentProps } from '@reach/router'
+import { HomePage } from './pages/HomePage/HomePage'
+import { Statistic } from './pages/Statistic/Statistic'
 
-function App() {
-  return <Header />
-}
+const Route = (
+    props: { component: JSX.Element } & RouteComponentProps
+) => props.component;
+
+const App = () => (
+    <Router>
+        <Route path="/home" component={<HomePage />} />
+        <Route path="/statistic" component={<Statistic />} />
+    </Router>
+)
 
 export default App;
