@@ -17,7 +17,10 @@ export const Header = ({ showArrow }:Props) => {
             {showArrow ?
                 <Link to="#" onClick={goBack}>
                     <BackIcon className={styles.arrow} fill='#DCDCDC' />
-                </Link> : null}
+                </Link> : 
+                <Link to="#" onClick={goBack}>
+                    <BackIcon className={styles.arrowNotActive} fill='#DCDCDC' />
+                </Link> }
             <div className={styles.ava_container}>
                 <Link to="/statistic">
                     <img className={styles.ava} src={ava} alt='#' />
