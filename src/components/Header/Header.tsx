@@ -1,32 +1,25 @@
 import styles from './Header.module.sass'
 import ava from './img/ava.png'
-import { Link } from '@reach/router';
 import { ReactComponent as BackIcon } from '../icons/arrow.svg'
+import { Link } from 'react-router-dom'
 
 type Props = {
-    showArrow: boolean,
+	showArrow: boolean
 }
 
-export const Header = ({ showArrow }:Props) => {
-    function goBack() {
-        window.history.back()
-    }
+export const Header = ({ showArrow }: Props) => {
+	return (
+		<div className={styles.header} style={{ justifyContent: showArrow ? 'space-between' : 'flex-end' }}>
+			{showArrow && (
+				<button onClick={() => window.history.back()} className={styles.arrow}>
+					<BackIcon fill='#DCDCDC' width={20} height={20} />
+				</button>
+			)}
 
-    return (
-        <div className={styles.header}>
-            {showArrow ?
-                <Link to="#" onClick={goBack}>
-                    <BackIcon className={styles.arrow} fill='#DCDCDC' />
-                </Link> : 
-                <Link to="#" onClick={goBack}>
-                    <BackIcon className={styles.arrowNotActive} fill='#DCDCDC' />
-                </Link> }
-            <div className={styles.ava_container}>
-                <Link to="/statistic">
-                    <img className={styles.ava} src={ava} alt='#' />
-                    <div className={styles.online}></div>
-                </Link>
-            </div>
-        </div>
-    )
+			<Link to='/statistic' className={styles.avaBox}>
+				<img className={styles.ava} src={ava} alt='#' />
+				<div className={styles.online} />
+			</Link>
+		</div>
+	)
 }

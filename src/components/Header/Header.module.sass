@@ -1,28 +1,21 @@
 .header
     display: flex
-    justify-content: space-between
-    padding: 20px 40px 0 20px
+    align-items: center
 
 .ava
-    margin-top: 10px
-    width: 57px
-    height: 59px
-    border-radius: 32px 5px 32px 32px
-    cursor: pointer
+    min-width: 100%
+    min-height: 100%
+    object-fit: cover
+    &Box
+        width: 50px
+        height: 52px
+        border-radius: 32px 5px 32px 32px
+        display: flex
+        overflow: hidden
+        position: relative
 
 .arrow
-    width: 70px
-    height: 20px
-    cursor: pointer
-    margin-top: 38.5px
-
-.arrowNotActive
-    display: none
-
-.ava_container
-    width: 50px
-    height: 75px
-    position: relative
+    margin-left: 5px
 
 .online
     width: 13px
