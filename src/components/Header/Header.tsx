@@ -15,11 +15,10 @@ export const Header = ({ showArrow }: Props) => {
 					<BackIcon fill='#DCDCDC' width={20} height={20} />
 				</button>
 			)}
-
-			<Link to='/statistic' className={styles.avaBox}>
-				<img className={styles.ava} src={ava} alt='#' />
-				<div className={styles.online} />
-			</Link>
+            <Link to='/statistic' className={styles.avaBox}>
+                <img className={styles.ava} src={ava} alt='#' />
+                <div className={styles.online} />
+            </Link>
 		</div>
 	)
 }
