@@ -7,7 +7,7 @@ export const Navigation = () => {
 			<Routes>
 				<Route path='/' element={<Pages.HomePage />} />
 				<Route path='/statistic' element={<Pages.StatisticPage />} />
-                <Route path='/todos' element={<Pages.TodosPage />} />
+				<Route path='/todos' element={<Pages.TodosPage />} />
 			</Routes>
 		</BrowserRouter>
 	)

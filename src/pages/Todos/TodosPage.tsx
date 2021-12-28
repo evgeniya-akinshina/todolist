@@ -10,21 +10,23 @@ import imgCup from '../../img/cup.png'
 import imgDegree from '../../img/degree.png'
 
 export class TodosPage extends React.Component {
-    render() {
-        return <div className={styles.content}>
-            <div className={styles.content_header}>
-                <Header showArrow />
-                <Title title={`Hey Jane,\nthis is your to-do list.`} />
-                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent:'space-around'}}>
-                    <Todo title={'School'} subTitle={'7 tasks'} img={imgDegree} />
-                    <Todo title={'Work'} subTitle={'4 tasks'} img={imgWork} />
-                    <Todo title={'Sport'} subTitle={'2 tasks'} img={imgCup} />
-                    <Todo title={'Home'} subTitle={'11 tasks'} img={imgHouse} />
-                </div>
-            </div>
-            <div>
-                <Button />
-            </div>
-        </div>
-    }
+	render() {
+		return (
+			<div className={styles.content}>
+				<div className={styles.content_header}>
+					<Header showArrow />
+					<Title title={`Hey Jane,\nthis is your to-do list.`} />
+					<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+						<Todo title={'School'} subTitle={'7 tasks'} img={imgDegree} />
+						<Todo title={'Work'} subTitle={'4 tasks'} img={imgWork} />
+						<Todo title={'Sport'} subTitle={'2 tasks'} img={imgCup} />
+						<Todo title={'Home'} subTitle={'11 tasks'} img={imgHouse} />
+					</div>
+				</div>
+				<div>
+					<Button />
+				</div>
+			</div>
+		)
+	}
 }
