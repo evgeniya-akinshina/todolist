@@ -2,24 +2,26 @@ import styles from './Header.module.sass'
 import ava from './img/ava.png'
 import { ReactComponent as BackIcon } from '../icons/arrow.svg'
 import { Link } from 'react-router-dom'
+import { Title } from '../Title'
+import { Props } from './types'
 
-type Props = {
-	showArrow: boolean
-}
-
-export const Header = ({ showArrow }: Props) => {
+export const Header = ({ canGoBack, title, subTitle }: Props) => {
 	return (
-		<div className={styles.header} style={{ justifyContent: showArrow ? 'space-between' : 'flex-end' }}>
-			{showArrow && (
-				<button onClick={() => window.history.back()} className={styles.arrow}>
-					<BackIcon fill='#DCDCDC' width={20} height={20} />
-				</button>
-			)}
+		<header className={styles.header}>
+			<div className={styles.top} style={{ justifyContent: canGoBack ? 'space-between' : 'flex-end' }}>
+				{canGoBack && (
+					<button onClick={() => window.history.back()} className={styles.arrow}>
+						<BackIcon fill='#DCDCDC' width={20} height={20} />
+					</button>
+				)}
 
-			<Link to='/statistic' className={styles.avaBox}>
-				<img className={styles.ava} src={ava} alt='#' />
-				<div className={styles.online} />
-			</Link>
-		</div>
+				<Link to='/statistic' className={styles.avaBox}>
+					<img className={styles.ava} src={ava} alt='#' />
+					<div className={styles.online} />
+				</Link>
+			</div>
+
+			{title && <Title title={title} subTitle={subTitle} />}
+		</header>
 	)
 }

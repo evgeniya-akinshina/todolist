@@ -5,7 +5,7 @@ export const Title = ({ title, subTitle }: Props) => {
 	return (
 		<div className={styles.title}>
 			<h2>{title}</h2>
-			<h5>{subTitle}</h5>
+			{subTitle && <h5>{subTitle}</h5>}
 		</div>
 	)
 }

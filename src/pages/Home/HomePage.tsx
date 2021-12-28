@@ -1,12 +1,30 @@
-import { Header } from '../../components/Header/Header'
-import { Title } from '../../components/Title'
-import styles from './HomePage.module.sass'
+import React from 'react'
+import { MenuCard } from '../../components/MenuCard/MenuCard'
+import { Page } from '../../components/Page'
 
-export const HomePage = () => {
-	return (
-		<div className={styles.content}>
-			<Header showArrow={false} />
-			<Title title="Jane's Profile" subTitle='11 tasks' />
-		</div>
-	)
+const data = [
+	{
+		title: 'Todos',
+		subTitle: '4 todos',
+	},
+	{
+		title: 'Users',
+		subTitle: '4 users',
+	},
+]
+
+export class HomePage extends React.Component {
+	render() {
+		return (
+			<Page title="Jane's Profile" canGoBack={false}>
+				<div style={{ marginTop: '-20px' }}>
+					{data.map((card, index) => (
+						<div key={index} style={{ marginTop: '20px' }}>
+							<MenuCard {...card} />
+						</div>
+					))}
+				</div>
+			</Page>
+		)
+	}
 }
