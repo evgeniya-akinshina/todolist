@@ -8,7 +8,7 @@ export class StatisticPage extends React.Component {
 		return (
 			<div className={styles.content}>
 				<div className={styles.content_header}>
-					<Header showArrow />
+					<Header canGoBack />
 					<Title title={`Hey Jane,\nThese are your statistics.`} />
 				</div>
 			</div>
