@@ -5,14 +5,14 @@ import { Button } from '../Button/Button'
 import { Link } from 'react-router-dom'
 
 export const Page = (props: Props) => {
-	const { link, children, ...headerProps } = props
+	const { link, children, showButton, ...headerProps } = props
 
 	return (
 		<>
 			<Header {...headerProps} />
 			<main className={styles.main}>{children}</main>
 			<Link to={link}>
-				<Button />
+				{showButton ? <Button /> : null}
 			</Link>
 		</>
 	)
