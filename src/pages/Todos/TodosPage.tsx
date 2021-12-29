@@ -24,8 +24,22 @@ const data = [
 export class TodosPage extends React.Component {
 	render() {
 		return (
-			<Page title={`Hey Jane,\nthis is your to-do list.`} canGoBack={true} link={'/add_new_tasks'} showButton={false}>
-				<div style={{ marginTop: '-20px', display: 'flex', flexWrap: 'wrap', flexDirection: 'row', paddingTop:'110px', justifyContent:'space-around'}}>
+			<Page
+				title={`Hey Jane,\nthis is your to-do list.`}
+				canGoBack={true}
+				link={'/add_new_tasks'}
+				showButton={false}
+			>
+				<div
+					style={{
+						marginTop: '-20px',
+						display: 'flex',
+						flexWrap: 'wrap',
+						flexDirection: 'row',
+						paddingTop: '110px',
+						justifyContent: 'space-around',
+					}}
+				>
 					{data.map((card, index) => (
 						<div key={index} style={{ marginTop: '20px' }}>
 							<MenuCard activeLink={false} {...card} />

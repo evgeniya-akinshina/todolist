@@ -14,7 +14,7 @@ export const Header = ({ canGoBack, title, subTitle }: Props) => {
 						<BackIcon fill='#DCDCDC' width={20} height={20} />
 					</button>
 				) : (
-					<div className={styles.text}> 
+					<div className={styles.text}>
 						<h4>Hi</h4>
 					</div>
 				)}

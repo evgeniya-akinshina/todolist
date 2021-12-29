@@ -11,9 +11,7 @@ export const Page = (props: Props) => {
 		<>
 			<Header {...headerProps} />
 			<main className={styles.main}>{children}</main>
-			<Link to={link}>
-				{showButton ? <Button /> : null}
-			</Link>
+			<Link to={link}>{showButton ? <Button /> : null}</Link>
 		</>
 	)
 }
