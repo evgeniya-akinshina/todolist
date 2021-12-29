@@ -1,4 +1,6 @@
 import { PropsWithChildren } from 'react'
 import { Props as HeaderProps } from './../Header/types'
 
-export type Props = PropsWithChildren<HeaderProps & {}>
+export type Props = PropsWithChildren<HeaderProps & {
+   link: string
+}>

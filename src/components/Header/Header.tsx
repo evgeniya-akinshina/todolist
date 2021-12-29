@@ -9,10 +9,14 @@ export const Header = ({ canGoBack, title, subTitle }: Props) => {
 	return (
 		<header className={styles.header}>
 			<div className={styles.top} style={{ justifyContent: canGoBack ? 'space-between' : 'flex-end' }}>
-				{canGoBack && (
+				{canGoBack ? (
 					<button onClick={() => window.history.back()} className={styles.arrow}>
 						<BackIcon fill='#DCDCDC' width={20} height={20} />
 					</button>
+				) : (
+					<div className={styles.text}> 
+						<h4>Hi</h4>
+					</div>
 				)}
 
 				<Link to='/statistic' className={styles.avaBox}>
