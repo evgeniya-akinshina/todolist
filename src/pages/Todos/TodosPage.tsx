@@ -27,7 +27,6 @@ export class TodosPage extends React.Component {
 			<Page
 				title={`Hey Jane,\nthis is your to-do list.`}
 				canGoBack={true}
-				link={'/add_new_tasks'}
 				showButton={false}
 			>
 				<div
