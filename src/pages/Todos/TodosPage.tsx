@@ -24,11 +24,7 @@ const data = [
 export class TodosPage extends React.Component {
 	render() {
 		return (
-			<Page
-				title={`Hey Jane,\nthis is your to-do list.`}
-				canGoBack={true}
-				showButton={false}
-			>
+			<Page title={`Hey Jane,\nthis is your to-do list.`} canGoBack={true} showButton={false}>
 				<div
 					style={{
 						marginTop: '-20px',

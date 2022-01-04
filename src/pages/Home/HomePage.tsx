@@ -1,4 +1,3 @@
-import { link } from 'fs'
 import React from 'react'
 import { goByLink } from '../../components/Button/Button'
 import { MenuCard } from '../../components/MenuCard/MenuCard'
@@ -20,7 +19,13 @@ const data = [
 export class HomePage extends React.Component {
 	render() {
 		return (
-			<Page title="Jane's Profile" canGoBack={false} showButton={true} text='+ ADD NEW TASKS' onClick={() => goByLink('/add_new_tasks')}>
+			<Page
+				title="Jane's Profile"
+				canGoBack={false}
+				showButton={true}
+				text='+ ADD NEW TASKS'
+				onClick={() => goByLink('/add_new_tasks')}
+			>
 				<div style={{ marginTop: '-20px', display: 'flex', justifyContent: 'space-around' }}>
 					{data.map((card, index) => (
 						<div key={index} style={{ marginTop: '20px' }}>

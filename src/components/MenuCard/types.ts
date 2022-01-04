@@ -1,6 +1,6 @@
 export type Props = {
 	title: string
 	subTitle?: string
-   link?: any
+	link?: any
 	activeLink: boolean
 }
