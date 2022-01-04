@@ -1,6 +1,6 @@
 import styles from './Header.module.sass'
 import ava from './img/ava.png'
-import { ReactComponent as BackIcon } from '../icons/arrow.svg'
+import { ReactComponent as BackIcon } from '../../icons/arrow.svg'
 import { Link } from 'react-router-dom'
 import { Title } from '../Title'
 import { Props } from './types'

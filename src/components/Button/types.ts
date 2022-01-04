@@ -1,4 +1,1 @@
-export type Props = {
-	text?: string
-	onClick?: () => void
-}
+export type Props = JSX.IntrinsicElements['button']

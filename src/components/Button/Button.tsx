@@ -1,10 +1,7 @@
 import { Props } from './types'
 import styles from './Button.module.sass'
+import classNames from 'classnames'
 
-export const goByLink = (link: string) => (window.location.href = link)
-
-export const Button = ({ text, onClick }: Props) => (
-	<button className={styles.button} onClick={onClick}>
-		{text}
-	</button>
+export const Button = ({ className, ...props }: Props) => (
+	<button {...props} className={classNames(styles.button, { [className!]: className })} />
 )
