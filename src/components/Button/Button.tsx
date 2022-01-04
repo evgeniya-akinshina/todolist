@@ -1,3 +1,7 @@
+import { Props } from './types'
 import styles from './Button.module.sass'
+import classNames from 'classnames'
 
-export const Button = () => <button className={styles.button}>+ ADD TASK</button>
+export const Button = ({ className, ...props }: Props) => (
+	<button {...props} className={classNames(styles.button, { [className!]: className })} />
+)

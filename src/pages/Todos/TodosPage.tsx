@@ -1,28 +1,46 @@
 import React from 'react'
-import { Button } from '../../components/Button/Button'
-import { Header } from '../../components/Header/Header'
-import { Title } from '../../components/Title'
-import { MenuCard } from '../../components/MenuCard/MenuCard'
-import styles from '../Home/HomePage.module.sass'
+
+const data = [
+	{
+		title: 'User 1',
+		subTitle: '7 tasks',
+	},
+	{
+		title: 'User 2',
+		subTitle: '4 tasks',
+	},
+	{
+		title: 'User 3',
+		subTitle: '2 tasks',
+	},
+	{
+		title: 'User 4',
+		subTitle: '11 tasks',
+	},
+]
 
 export class TodosPage extends React.Component {
 	render() {
-		return (
-			<div className={styles.content}>
-				<div className={styles.content_header}>
-					<Header canGoBack />
-					<Title title={`Hey Jane,\nthis is your to-do list.`} />
-					<div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
-						<MenuCard title={'School'} subTitle={'7 tasks'} />
-						<MenuCard title={'Work'} subTitle={'4 tasks'} />
-						<MenuCard title={'Sport'} subTitle={'2 tasks'} />
-						<MenuCard title={'Home'} subTitle={'11 tasks'} />
-					</div>
-				</div>
-				<div>
-					<Button />
-				</div>
-			</div>
-		)
+		return null
+		// return (
+		// 	<PageContent title={`Hey Jane,\nthis is your to-do list.`} canGoBack={true} showButton={false}>
+		// 		<div
+		// 			style={{
+		// 				marginTop: '-20px',
+		// 				display: 'flex',
+		// 				flexWrap: 'wrap',
+		// 				flexDirection: 'row',
+		// 				paddingTop: '110px',
+		// 				justifyContent: 'space-around',
+		// 			}}
+		// 		>
+		// 			{data.map((card, index) => (
+		// 				<div key={index} style={{ marginTop: '20px' }}>
+		// 					<MenuCard activeLink={false} {...card} />
+		// 				</div>
+		// 			))}
+		// 		</div>
+		// 	</PageContent>
+		// )
 	}
 }
