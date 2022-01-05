@@ -3,6 +3,7 @@ import { Button } from '../../components/Button'
 import { Header } from '../../components/layout/Header'
 import { PageContent } from '../../components/layout/PageContent'
 import { MenuCard } from '../../components/MenuCard'
+import styles from './TodosPage.module.sass'
 
 const data = [
 	{
@@ -29,18 +30,9 @@ export class TodosPage extends React.Component {
 			<>
 				<Header title={`Hey Jane,\nthis is your to-do list.`} canGoBack />
 				<PageContent>
-					<div
-						style={{
-							marginTop: '-20px',
-							display: 'flex',
-							flexWrap: 'wrap',
-							flexDirection: 'row',
-							paddingTop: '110px',
-							justifyContent: 'space-around',
-						}}
-					>
+					<div className={styles.menu}>
 						{data.map((card, index) => (
-							<div key={index} style={{ marginTop: '20px' }}>
+							<div key={index} className={styles.menuItem}>
 								<MenuCard activeLink={false} {...card} />
 							</div>
 						))}
