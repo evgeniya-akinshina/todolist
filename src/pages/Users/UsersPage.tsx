@@ -3,7 +3,7 @@ import { Button } from '../../components/Button'
 import { Header } from '../../components/layout/Header'
 import { PageContent } from '../../components/layout/PageContent'
 import { MenuCard } from '../../components/MenuCard'
-import styles from './TodosPage.module.sass'
+import styles from './UsersPage.module.sass'
 
 const data = [
 	{
@@ -24,7 +24,7 @@ const data = [
 	},
 ]
 
-export class TodosPage extends React.Component {
+export class UsersPage extends React.Component {
 	render() {
 		return (
 			<>
