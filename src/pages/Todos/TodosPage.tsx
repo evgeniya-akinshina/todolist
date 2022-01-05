@@ -1,4 +1,9 @@
 import React from 'react'
+import { Button } from '../../components/Button'
+import { Header } from '../../components/layout/Header'
+import { PageContent } from '../../components/layout/PageContent'
+import { MenuCard } from '../../components/MenuCard'
+import styles from './TodosPage.module.sass'
 
 const data = [
 	{
@@ -21,26 +26,22 @@ const data = [
 
 export class TodosPage extends React.Component {
 	render() {
-		return null
-		// return (
-		// 	<PageContent title={`Hey Jane,\nthis is your to-do list.`} canGoBack={true} showButton={false}>
-		// 		<div
-		// 			style={{
-		// 				marginTop: '-20px',
-		// 				display: 'flex',
-		// 				flexWrap: 'wrap',
-		// 				flexDirection: 'row',
-		// 				paddingTop: '110px',
-		// 				justifyContent: 'space-around',
-		// 			}}
-		// 		>
-		// 			{data.map((card, index) => (
-		// 				<div key={index} style={{ marginTop: '20px' }}>
-		// 					<MenuCard activeLink={false} {...card} />
-		// 				</div>
-		// 			))}
-		// 		</div>
-		// 	</PageContent>
-		// )
+		return (
+			<>
+				<Header title={`Hey Jane,\nthis is your to-do list.`} canGoBack />
+				<PageContent>
+					<div className={styles.menu}>
+						{data.map((card, index) => (
+							<div key={index} className={styles.menuItem}>
+								<MenuCard activeLink={false} {...card} />
+							</div>
+						))}
+					</div>
+				</PageContent>
+				<Button onClick={() => (window.location.href = '/add-new-tasks')} showButton={false}>
+					+ Add new tasks
+				</Button>
+			</>
+		)
 	}
 }

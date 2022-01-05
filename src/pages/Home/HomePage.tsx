@@ -32,7 +32,7 @@ export class HomePage extends React.Component {
 						))}
 					</div>
 				</PageContent>
-				<Button onClick={() => (window.location.href = '/add-new-tasks')}>+ Add new tasks</Button>
+				<Button onClick={() => (window.location.href = '/add-new-tasks')} showButton={true}>+ Add new tasks</Button>
 			</>
 		)
 	}
