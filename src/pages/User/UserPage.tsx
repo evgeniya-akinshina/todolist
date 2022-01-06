@@ -30,13 +30,29 @@ export const requestAxiosUsers = async () => {
 
 requestAxiosUsers()
 
+export const randomDate = () => {
+	const after = new Date()
+	after.setDate(after.getDate() + 31)
+
+	const today = new Date()
+	return new Date(today.getTime() + Math.random() * (after.getTime() - today.getTime()))
+}
+
+alert(randomDate())
+
 export class UserPage extends React.Component {
 	render() {
 		return (
 			<>
 				<div className={styles.content}>
 					<Header title='User 1' subTitle='8 tasks' canGoBack />
-               <Button className={styles.button} onClick={() => (window.location.href = '/add-new-tasks')} showButton={true}>+ Add new tasks</Button>
+					<Button
+						className={styles.button}
+						onClick={() => (window.location.href = '/add-new-tasks')}
+						showButton={true}
+					>
+						+ Add new tasks
+					</Button>
 				</div>
 			</>
 		)
