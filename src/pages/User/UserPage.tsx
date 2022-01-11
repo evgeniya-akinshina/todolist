@@ -3,44 +3,36 @@ import { Button } from '../../components/Button'
 import { Header } from '../../components/layout/Header'
 import styles from './UserPage.module.sass'
 import axios from 'axios'
+import { User } from '../../store/reducers/users'
+import { Todo } from '../../store/reducers/todos'
+import {Props} from './types'
+// import { randomDate } from '../../servises/helpers'
 
-export const requestAxiosTodos = async () => {
-	try {
-		const res = await axios.get('https://jsonplaceholder.typicode.com/todos')
-		setTimeout(() => {
-			console.log(res.data)
-		}, 2000)
-	} catch {
-		console.log('Error!')
+export class UserPage extends React.Component<Props> {
+	componentDidMount() {
+		;(async () => {
+			try {
+				const [todos, users] = await Promise.all([
+					axios
+						.get<Todo[]>('https://jsonplaceholder.typicode.com/todos')
+						.then(res => res.data),	
+					axios
+						.get<User[]>('https://jsonplaceholder.typicode.com/users')
+						.then(res => res.data),
+				])
+				if (users && todos) {
+					const userArray = users.map(user => ({
+						id: user.id,
+						name: user.name,
+						username: user.username,
+						todos: todos.filter(todo => todo.userId === user.id),
+					}))
+					// todo.userId === user.id
+					console.log(userArray.map(item => ({ ...item, todos: item.todos.map(todo => todo.title) })))
+				}
+			} catch (err) {}
+		})()
 	}
-}
-
-requestAxiosTodos()
-
-export const requestAxiosUsers = async () => {
-	try {
-		const res = await axios.get('https://jsonplaceholder.typicode.com/users')
-		setTimeout(() => {
-			console.log(res.data)
-		}, 2000)
-	} catch {
-		console.log('Error!')
-	}
-}
-
-requestAxiosUsers()
-
-export const randomDate = () => {
-	const after = new Date()
-	after.setDate(after.getDate() + 31)
-
-	const today = new Date()
-	return new Date(today.getTime() + Math.random() * (after.getTime() - today.getTime()))
-}
-
-alert(randomDate())
-
-export class UserPage extends React.Component {
 	render() {
 		return (
 			<>

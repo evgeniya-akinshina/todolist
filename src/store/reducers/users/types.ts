@@ -1,3 +1,5 @@
+import { Todo } from "../todos"
+
 export type UsersState = {
 	data: User[]
 	error: string
@@ -7,6 +9,7 @@ export type User = {
 	id: number
 	name: string
 	username: string
+   todos: Todo[]
 }
 
 export enum UsersTypes {
