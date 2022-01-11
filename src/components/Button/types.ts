@@ -1,3 +1,3 @@
 export type Props = JSX.IntrinsicElements['button'] & {
-   showButton?: boolean
+	showButton?: boolean
 }

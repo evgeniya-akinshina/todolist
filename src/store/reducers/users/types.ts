@@ -1,34 +1,39 @@
-import { Todo } from "../todos"
-
 export type UsersState = {
-	data: User[]
-	error: string
+	users: User[]
+	loading: boolean
 }
 
 export type User = {
 	id: number
 	name: string
 	username: string
-   todos: Todo[]
+	todos: Todo[]
+}
+
+export type Todo = {
+	userId: number
+	id: number
+	title: string
+	createAt: Date
 }
 
 export enum UsersTypes {
-	FETCH_USERS__START = 'users|fetchTodosStart',
-	FETCH_USERS__SUCCESS = 'users|fetchTodosSuccess',
-	FETCH_USERS__FAILURE = 'users|fetchTodosFailure',
+	FETCH_USERS__START = 'users|fetchUsersStart',
+	FETCH_USERS__SUCCESS = 'users|fetchUsersSuccess',
+	FETCH_USERS__FAILURE = 'users|fetchUsersFailure',
 }
 
-export type UserStart = {
+export type FetchUsersStart = {
 	type: UsersTypes.FETCH_USERS__START
 }
 
-export type UserSuccess = {
+export type FetchUsersSuccess = {
 	type: UsersTypes.FETCH_USERS__SUCCESS
 	payload: User[]
 }
 
-export type UserFailure = {
+export type FetchUsersFailure = {
 	type: UsersTypes.FETCH_USERS__FAILURE
 }
 
-export type UsersActions = UserStart | UserSuccess | UserFailure
+export type UsersActions = FetchUsersStart | FetchUsersSuccess | FetchUsersFailure

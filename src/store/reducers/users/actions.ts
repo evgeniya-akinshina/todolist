@@ -1,20 +1,20 @@
 import * as Types from './types'
 
-const getUsersStart = (): Types.UserStart => ({
+const fetchUsersStart = (): Types.FetchUsersStart => ({
 	type: Types.UsersTypes.FETCH_USERS__START,
 })
 
-const getUsersSuccess = (payload: Types.UserSuccess['payload']): Types.UserSuccess => ({
+const fetchUsersSuccess = (payload: Types.FetchUsersSuccess['payload']): Types.FetchUsersSuccess => ({
 	type: Types.UsersTypes.FETCH_USERS__SUCCESS,
-   payload,
+	payload,
 })
 
-const getUsersFailure = (): Types.UserFailure => ({
+const fetchUsersFailure = (): Types.FetchUsersFailure => ({
 	type: Types.UsersTypes.FETCH_USERS__FAILURE,
 })
 
 export const actions = {
-	getUsersStart,
-	getUsersSuccess,
-	getUsersFailure,
+	fetchUsersStart,
+	fetchUsersSuccess,
+	fetchUsersFailure,
 }

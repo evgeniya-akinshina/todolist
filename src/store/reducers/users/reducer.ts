@@ -2,8 +2,8 @@ import { UsersState as State, UsersTypes } from './types'
 import { RootActions } from '../../types'
 
 const initialState: State = {
-	data: [],
-	error: '',
+	users: [],
+	loading: false,
 }
 
 export const usersReducer = (state: State = initialState, action: RootActions): State => {
@@ -11,17 +11,18 @@ export const usersReducer = (state: State = initialState, action: RootActions): 
 		case UsersTypes.FETCH_USERS__START:
 			return {
 				...state,
-				error: '',
+				loading: true,
 			}
 		case UsersTypes.FETCH_USERS__SUCCESS:
 			return {
 				...state,
-				data: action.payload,
+				users: action.payload,
+				loading: false,
 			}
 		case UsersTypes.FETCH_USERS__FAILURE:
 			return {
 				...state,
-				error: 'Error!',
+				loading: false,
 			}
 
 		default:
