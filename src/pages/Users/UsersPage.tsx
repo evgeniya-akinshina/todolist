@@ -11,7 +11,7 @@ export class UsersPage extends React.Component<Props> {
 		const { users } = this.props
 		return (
 			<>
-				<Header title={`Hey Jane,\nthis is your to-do list.`} canGoBack />
+				<Header title={`Hey Jane,\nthis is list of all users.`} canGoBack />
 				<PageContent>
 					{users.length > 0 && (
 						<div className={styles.menu}>
@@ -107,9 +107,7 @@ export class UsersPage extends React.Component<Props> {
 						</div>
 					)}
 				</PageContent>
-				<Button onClick={() => (window.location.href = '/add-new-tasks')} showButton={false}>
-					+ Add new tasks
-				</Button>
+				<Button showButton={false} />
 			</>
 		)
 	}

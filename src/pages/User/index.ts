@@ -1,1 +1,1 @@
-export { UserPage } from './container'
+export { UserPage } from './UserPage'
