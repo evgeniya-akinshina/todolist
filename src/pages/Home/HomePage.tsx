@@ -9,7 +9,6 @@ import { Props } from './types'
 export class HomePage extends React.Component<Props> {
 	render() {
 		const { users } = this.props
-
 		return (
 			<>
 				<Header title="Jane's Profile" canGoBack={false} />
