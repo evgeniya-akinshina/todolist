@@ -43,7 +43,7 @@ export const UserPage = (props: Props) => {
 						<Header title={'User ' + users[9].id} subTitle={users[9].todos.length + ' todos'} canGoBack />
 					) : null}
 					<Button className={styles.button} onClick={() => (window.location.href = '/add-new-tasks')} showButton>
-						+ Add new tasks
+						+ Add new task
 					</Button>
 				</div>
 			)}

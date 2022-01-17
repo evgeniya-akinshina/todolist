@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '../../components/Button'
 import { Header } from '../../components/layout/Header'
 import { PageContent } from '../../components/layout/PageContent'
 import { MenuCard } from '../../components/MenuCard'
@@ -107,7 +106,6 @@ export class UsersPage extends React.Component<Props> {
 						</div>
 					)}
 				</PageContent>
-				<Button showButton={false} />
 			</>
 		)
 	}
