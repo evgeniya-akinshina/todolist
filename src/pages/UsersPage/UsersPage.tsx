@@ -8,20 +8,20 @@ import { Props } from './types'
 export class UsersPage extends React.Component<Props> {
 	render() {
 		const { users } = this.props
+
 		return (
 			<>
 				<Header title={`Hey Jane,\nthis is list of all users.`} canGoBack />
 				<PageContent>
 					{users.length > 0 && (
 						<div className={styles.menu}>
-							{this.props.users.map((item, index) => (
-								<div className={styles.menuItem}>
+							{users.map((user, index) => (
+								<div className={styles.menuItem} key={index}>
 									<MenuCard
 										activeLink
-										key={index}
-										title={'User ' + item.id}
-										link={`/user/${item.id}`}
-										subTitle={item.todos.length + ' todos'}
+										title={user.name}
+										link={`/user/${user.id}`}
+										subTitle={user.todos.length + ' todos'}
 									/>
 								</div>
 							))}

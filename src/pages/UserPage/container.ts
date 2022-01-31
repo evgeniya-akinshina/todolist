@@ -1,17 +1,15 @@
 import { connect } from 'react-redux'
 import { RootState } from '../../store/types'
 import { UserPage as Component } from './UserPage'
-import { usersActions } from '../../store/reducers/users'
+import { PageProps } from './types'
+import { withRouter } from '../../HOCs/withRouter'
 
-export const mapStateToProps = (state: RootState) => ({
-	users: state.users.users,
+export const mapStateToProps = (state: RootState, props: PageProps) => ({
+	user: state.users.users.find(user => user.id === props.router.params.id),
 })
 
-export const mapActionsToProps = {
-	fetchUsersStart: usersActions.fetchUsersStart,
-	fetchUsersSuccess: usersActions.fetchUsersSuccess,
-	fetchUsersFailure: usersActions.fetchUsersFailure,
-}
+export const mapActionsToProps = {}
 
 export const connector = connect(mapStateToProps, mapActionsToProps)
-export const UserPage = connector(Component)
+
+export const UserPage = withRouter(connector(Component))
