@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import { usersActions } from '../../store/reducers/users'
 import { RootState } from '../../store/types'
-import { UsersPage as Component } from './UsersPage'
+import { TodosPage as Component } from './TodosPage'
+import { usersActions } from '../../store/reducers/users'
 
 export const mapStateToProps = (state: RootState) => ({
 	users: state.users.users,
@@ -14,4 +14,4 @@ export const mapActionsToProps = {
 }
 
 export const connector = connect(mapStateToProps, mapActionsToProps)
-export const UsersPage = connector(Component)
+export const TodosPage = connector(Component)
