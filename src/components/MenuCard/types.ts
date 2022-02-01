@@ -3,4 +3,5 @@ export type Props = {
 	subTitle?: string
 	link?: any
 	activeLink: boolean
+   showProgressBars: boolean
 }

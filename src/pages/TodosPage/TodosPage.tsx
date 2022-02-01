@@ -16,9 +16,10 @@ export class TodosPage extends React.Component<Props> {
 						<PageContent>
 							{users[0].todos.map(todo => {
 								return (
-									<p>
-										{todo.id + '. '} {'"' +todo.title + '" - '} {JSON.stringify(todo.createAt)}
-									</p>
+									<>
+										<p>{`${todo.createAt.toDateString()}`}</p>
+										<p>{`${todo.title}`}</p>
+									</>
 								)
 							})}
 						</PageContent>

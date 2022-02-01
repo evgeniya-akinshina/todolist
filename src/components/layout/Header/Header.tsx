@@ -14,7 +14,7 @@ export const Header = ({ canGoBack, title, subTitle }: Props) => {
 						<BackIcon fill='#DCDCDC' width={20} height={20} />
 					</button>
 				) : (
-					<h4>Hi</h4>
+					<h5>Hi</h5>
 				)}
 
 				<Link to='/statistic' className={styles.avaBox}>

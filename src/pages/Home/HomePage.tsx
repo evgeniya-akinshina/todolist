@@ -17,11 +17,23 @@ export class HomePage extends React.Component<Props> {
 					{users.length > 0 && (
 						<div className={styles.menu}>
 							<div className={styles.menuItem}>
-								<MenuCard activeLink title='Todos' link='todos' subTitle={users[0].todos.length + ' todos'} />
+								<MenuCard
+									activeLink
+									title='Todos'
+									link='todos'
+									subTitle={users[0].todos.length + ' todos'}
+									showProgressBars={false}
+								/>
 							</div>
 
 							<div className={styles.menuItem}>
-								<MenuCard activeLink title='Users' link='users' subTitle={users.length + ' users'} />
+								<MenuCard
+									activeLink
+									title='Users'
+									link='users'
+									subTitle={users.length + ' users'}
+									showProgressBars={false}
+								/>
 							</div>
 						</div>
 					)}
