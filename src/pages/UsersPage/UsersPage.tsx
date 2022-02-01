@@ -18,7 +18,7 @@ export class UsersPage extends React.Component<Props> {
 							{users.map((user, index) => (
 								<div className={styles.menuItem} key={index}>
 									<MenuCard
-                              showProgressBars
+										showProgressBars
 										activeLink
 										title={user.name}
 										link={`/user/${user.id}`}
