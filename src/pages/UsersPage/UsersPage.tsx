@@ -8,7 +8,6 @@ import { Props } from './types'
 export class UsersPage extends React.Component<Props> {
 	render() {
 		const { users } = this.props
-
 		return (
 			<>
 				<Header title={`Hey Jane,\nthis is list of all users.`} canGoBack />
@@ -16,15 +15,18 @@ export class UsersPage extends React.Component<Props> {
 					{users.length > 0 && (
 						<div className={styles.menu}>
 							{users.map((user, index) => (
-								<div className={styles.menuItem} key={index}>
-									<MenuCard
-										showProgressBars
-										activeLink
-										title={user.name}
-										link={`/user/${user.id}`}
-										subTitle={user.todos.length + ' todos'}
-									/>
-								</div>
+								<>
+									<div className={styles.menuItem} key={index}>
+										<MenuCard
+											showProgressBars
+											activeLink
+											title={user.name}
+											link={`/user/${user.id}`}
+											subTitle={user.todos.length + ' todos'}
+											todosCompleted={Math.trunc(user.todos.filter(todo => todo.completed).length / user.todos.length * 100)}
+										/>
+									</div>
+								</>
 							))}
 						</div>
 					)}

@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom'
 import { Props } from './types'
 import { ProgressBar } from 'react-bootstrap'
 
-export const MenuCard = ({ title, subTitle, link, activeLink, showProgressBars }: Props) => {
+export const MenuCard = ({ title, subTitle, link, activeLink, showProgressBars, todosCompleted }: Props) => {
 	return activeLink ? (
 		<>
 			<Link to={link} className={styles.container}>
-				{showProgressBars ? <ProgressBar variant='info' now={100} style={{ height: 10 }} /> : null}
+				{showProgressBars ? (
+					<ProgressBar variant='info' now={todosCompleted} label={`${todosCompleted}%`} style={{ height: 10 }} />
+				) : null}
 				<h3>{title[0]}</h3>
 				<h3 className={styles.title}>{title}</h3>
 				{subTitle && <p>{subTitle}</p>}
