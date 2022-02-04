@@ -15,7 +15,7 @@ export type Todo = {
 	id: number
 	title: string
 	createAt: Date
-   completed: boolean
+	completed: boolean
 }
 
 export enum UsersTypes {

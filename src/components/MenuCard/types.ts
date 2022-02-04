@@ -3,6 +3,6 @@ export type Props = {
 	subTitle?: string
 	link?: any
 	activeLink: boolean
-   totalCount?: number
-   completedCount?: number
+	totalCount?: number
+	completedCount?: number
 }

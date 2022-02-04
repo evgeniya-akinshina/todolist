@@ -13,7 +13,7 @@ export class UserPage extends React.Component<Props, {}> {
 				{!!user && (
 					<div className={styles.content}>
 						<Header title={user.name} subTitle={user.todos.length + ' todos'} canGoBack />
-                  
+
 						<PageContent>
 							{user.todos.map(todo => {
 								return (
