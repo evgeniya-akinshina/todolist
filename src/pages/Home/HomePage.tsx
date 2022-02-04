@@ -21,7 +21,6 @@ export class HomePage extends React.Component<Props> {
 									title='Todos'
 									link='todos'
 									subTitle={users[0].todos.length + ' todos'}
-									showProgressBars={false}
 								/>
 							</div>
 
@@ -31,7 +30,6 @@ export class HomePage extends React.Component<Props> {
 									title='Users'
 									link='users'
 									subTitle={users.length + ' users'}
-									showProgressBars={false}
 								/>
 							</div>
 						</div>

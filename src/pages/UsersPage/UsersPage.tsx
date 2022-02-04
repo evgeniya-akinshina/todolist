@@ -18,12 +18,12 @@ export class UsersPage extends React.Component<Props> {
 								<>
 									<div className={styles.menuItem} key={index}>
 										<MenuCard
-											showProgressBars
 											activeLink
 											title={user.name}
 											link={`/user/${user.id}`}
 											subTitle={user.todos.length + ' todos'}
-											todosCompleted={Math.trunc(user.todos.filter(todo => todo.completed).length / user.todos.length * 100)}
+											totalCount={user.todos.length}
+											completedCount={Math.trunc(user.todos.filter(todo => todo.completed).length)}
 										/>
 									</div>
 								</>
