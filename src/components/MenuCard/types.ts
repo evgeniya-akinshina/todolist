@@ -4,5 +4,5 @@ export type Props = {
 	link?: any
 	activeLink: boolean
 	showProgressBars: boolean
-   todosCompleted?: any
+   todosCompleted?: number
 }
