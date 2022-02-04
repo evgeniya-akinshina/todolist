@@ -15,18 +15,17 @@ export class UsersPage extends React.Component<Props> {
 					{users.length > 0 && (
 						<div className={styles.menu}>
 							{users.map((user, index) => (
-								<>
-									<div className={styles.menuItem} key={index}>
-										<MenuCard
-											activeLink
-											title={user.name}
-											link={`/user/${user.id}`}
-											subTitle={user.todos.length + ' todos'}
-											totalCount={user.todos.length}
-											completedCount={Math.trunc(user.todos.filter(todo => todo.completed).length)}
-										/>
-									</div>
-								</>
+								<div className={styles.menuItem} key={index}>
+									<MenuCard
+										title={user.name}
+										to={`/user/${user.id}`}
+										subTitle={user.todos.length + ' todos'}
+										progress={{
+											value: user.todos.filter(todo => todo.completed).length,
+											total: user.todos.length,
+										}}
+									/>
+								</div>
 							))}
 						</div>
 					)}
