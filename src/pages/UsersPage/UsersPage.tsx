@@ -23,7 +23,7 @@ export class UsersPage extends React.Component<Props> {
 											link={`/user/${user.id}`}
 											subTitle={user.todos.length + ' todos'}
 											totalCount={user.todos.length}
-											completedCount={Math.trunc(user.todos.filter(todo => todo.completed).length)}
+											completedCount={Math.trunc(user.todos.filter(todo => todo.completed).length)}prettier
 										/>
 									</div>
 								</>
