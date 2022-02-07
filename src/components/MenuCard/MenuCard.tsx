@@ -5,8 +5,8 @@ import { Props } from './types'
 export const MenuCard = ({ title, subTitle, to, progress }: Props) => {
 	return (
 		<Link to={to} className={styles.container}>
-			{progress && (
-            <><div>{progress.today}</div><div className={styles.progress} style={{ width: `${(progress.today / progress.total) * 100}%` }} /></>
+			{progress && progress?.today >= 1 && (
+				<div className={styles.progress} style={{ width: `${(progress.today / progress.total) * 100}%` }} />
 			)}
 			<div className={styles.card}>
 				<h3 className={styles.letter}>{title[0]}</h3>
