@@ -23,6 +23,7 @@ export class UsersPage extends React.Component<Props> {
 										progress={{
 											value: user.todos.filter(todo => todo.completed).length,
 											total: user.todos.length,
+                                 today: user.todos.filter(todo => todo.createAt.getDate() === new Date().getDate()).length,
 										}}
 									/>
 								</div>

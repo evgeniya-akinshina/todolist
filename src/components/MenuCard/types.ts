@@ -8,5 +8,6 @@ export type Props = LinkProps &
 		progress?: {
 			value: number
 			total: number
+         today: number
 		}
 	}
