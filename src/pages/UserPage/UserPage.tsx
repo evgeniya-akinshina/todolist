@@ -17,10 +17,10 @@ export class UserPage extends React.Component<Props, {}> {
 						<PageContent>
 							{user.todos.map(todo => {
 								return (
-									<>
+									<div className={styles.todos}>
 										<p>{`${todo.createAt.toDateString()}`}</p>
 										<p>{`${todo.title}`}</p>
-									</>
+									</div>
 								)
 							})}
 						</PageContent>
