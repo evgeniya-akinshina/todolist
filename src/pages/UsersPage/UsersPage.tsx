@@ -3,20 +3,17 @@ import { Header } from '../../components/layout/Header'
 import { PageContent } from '../../components/layout/PageContent'
 import { MenuCard } from '../../components/MenuCard'
 import styles from './UsersPage.module.sass'
-import { Props } from './types'
 import { Indicator } from '../../components/Indicator'
 import { DateRangeFilter } from '../../components/Indicator/types'
 
-export class UsersPage extends React.Component<Props> {
-	state = {
-		activButton: true,
+import { Props, State } from './types'
+
+export class UsersPage extends React.Component<Props, State> {
+	state: State = {
+		filter: DateRangeFilter.DAY,
 	}
 
-	toggleBlog = () => {
-		this.setState({
-			activButton: !this.state.activButton,
-		})
-	}
+	setFilter = (filter: DateRangeFilter) => this.setState({ filter })
 
 	render() {
 		const { users } = this.props
@@ -26,19 +23,15 @@ export class UsersPage extends React.Component<Props> {
 		return (
 			<>
 				<Header title={`Hey Jane,\nthis is list of all users.`} canGoBack />
+				<Indicator onClick={this.setFilter} filter={this.state.filter} />
+
 				<PageContent>
-					<Indicator
-						onClick={this.toggleBlog}
-						filter={this.state.activButton ? DateRangeFilter.DAY : DateRangeFilter.MONTH}
-					/>
 					{users.length > 0 && (
 						<div className={styles.menu}>
 							{users.map((user, index) => {
 								const todos = user.todos.filter(todo => todo.createAt.getDate() === today)
 								const todayValue = todos.filter(todo => todo.completed).length
 								const todayTotal = todos.length
-								const weekValue = user.todos.filter(todo => todo.completed).length
-								const weekTotal = user.todos.length
 
 								return (
 									<div className={styles.menuItem} key={index}>
@@ -46,14 +39,7 @@ export class UsersPage extends React.Component<Props> {
 											title={user.name}
 											to={`/user/${user.id}`}
 											subTitle={user.todos.length + ' todos'}
-											progress={
-												today
-													? {
-															value: todayValue,
-															total: todayTotal,
-													  }
-													: { value: weekValue, total: weekTotal }
-											}
+											progress={{ value: todayValue, total: todayTotal }}
 										/>
 									</div>
 								)

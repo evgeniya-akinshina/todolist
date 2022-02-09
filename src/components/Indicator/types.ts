@@ -1,6 +1,6 @@
 export type Props = {
-	filter?: DateRangeFilter
-	onClick?: () => void
+	filter: DateRangeFilter
+	onClick: (value: DateRangeFilter) => void
 }
 
 export enum DateRangeFilter {
