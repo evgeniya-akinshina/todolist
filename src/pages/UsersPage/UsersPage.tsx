@@ -30,8 +30,11 @@ export class UsersPage extends React.Component<Props, State> {
 						<div className={styles.menu}>
 							{users.map((user, index) => {
 								const todos = user.todos.filter(todo => todo.createAt.getDate() === today)
-								const todayValue = todos.filter(todo => todo.completed).length
-								const todayTotal = todos.length
+								const value =
+									this.state.filter === DateRangeFilter.DAY
+										? todos.filter(todo => todo.completed).length
+										: user.todos.filter(todo => todo.completed).length
+								const total = this.state.filter === DateRangeFilter.DAY ? todos.length : user.todos.length
 
 								return (
 									<div className={styles.menuItem} key={index}>
@@ -39,7 +42,7 @@ export class UsersPage extends React.Component<Props, State> {
 											title={user.name}
 											to={`/user/${user.id}`}
 											subTitle={user.todos.length + ' todos'}
-											progress={{ value: todayValue, total: todayTotal }}
+											progress={{ value, total }}
 										/>
 									</div>
 								)

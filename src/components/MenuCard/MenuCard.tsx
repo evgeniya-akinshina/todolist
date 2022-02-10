@@ -6,7 +6,7 @@ export const MenuCard = ({ title, subTitle, to, progress }: Props) => {
 	return (
 		<Link to={to} className={styles.container}>
 			{progress && (
-				<div className={styles.progress} style={{ width: `${(progress.value / progress.total) * 100}%` }} />
+            <><div>{progress.value} {progress.total}</div><div className={styles.progress} style={{ width: `${(progress.value / progress.total) * 100}%` }} /></>
 			)}
 
 			<h3 className={styles.letter}>{title[0]}</h3>
