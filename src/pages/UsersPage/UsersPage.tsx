@@ -6,7 +6,8 @@ import styles from './UsersPage.module.sass'
 import { Indicator } from '../../components/Indicator'
 import { DateRangeFilter } from '../../components/Indicator/types'
 import { Props, State } from './types'
-import { checkDateInRange } from '../../helpers/dateHelper'
+import { checkDateInRange, getCurrentWeek } from '../../helpers/dateHelper'
+import { Todo } from '../../store/reducers/users'
 
 export class UsersPage extends React.Component<Props, State> {
 	state: State = {
@@ -18,8 +19,6 @@ export class UsersPage extends React.Component<Props, State> {
 	render() {
 		const { users } = this.props
 
-		const today = new Date().getDate()
-
 		return (
 			<>
 				<Header title={`Hey Jane,\nthis is list of all users.`} canGoBack />
@@ -29,17 +28,25 @@ export class UsersPage extends React.Component<Props, State> {
 					{users.length > 0 && (
 						<div className={styles.menu}>
 							{users.map((user, index) => {
-								let value, total
-								if (this.state.filter === DateRangeFilter.DAY) {
-									const todos = user.todos.filter(todo => todo.createAt.getDate() === today)
-									value = todos.filter(todo => todo.completed).length
-									total = todos.length
+								let todosFilterFn: ((todo: Todo) => boolean) | undefined
+
+								switch (this.state.filter) {
+									case DateRangeFilter.DAY:
+										todosFilterFn = todo => todo.createAt.getDate() === new Date().getDate()
+										break
+
+									case DateRangeFilter.WEEK: {
+										const { start, end } = getCurrentWeek()
+										todosFilterFn = todo => checkDateInRange(todo.createAt, start, end)
+										break
+									}
 								}
 
-								if (this.state.filter === DateRangeFilter.WEEK) {
-									const week = user.todos.filter(todo => checkDateInRange(todo.createAt))
-									value = week.filter(todo => todo.completed).length
-									total = week.length
+								let progress
+
+								if (!!todosFilterFn) {
+									const todos = user.todos.filter(todosFilterFn)
+									progress = { value: todos.filter(todo => todo.completed).length, total: todos.length }
 								}
 
 								return (
@@ -48,7 +55,7 @@ export class UsersPage extends React.Component<Props, State> {
 											title={user.name}
 											to={`/user/${user.id}`}
 											subTitle={user.todos.length + ' todos'}
-											progress={value && total ? { value, total } : undefined}
+											progress={progress}
 										/>
 									</div>
 								)
