@@ -9,8 +9,8 @@ export const Indicator = ({ filter, onClick }: Props) => {
 				{filter === DateRangeFilter.DAY && <div className={styles.strip} />}
 			</div>
 			<div>
-				<button onClick={() => onClick(DateRangeFilter.MONTH)}>WEEK</button>
-				{filter === DateRangeFilter.MONTH && <div className={styles.strip} />}
+				<button onClick={() => onClick(DateRangeFilter.WEEK)}>WEEK</button>
+				{filter === DateRangeFilter.WEEK && <div className={styles.strip} />}
 			</div>
 		</div>
 	)

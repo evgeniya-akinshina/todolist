@@ -5,8 +5,8 @@ import { MenuCard } from '../../components/MenuCard'
 import styles from './UsersPage.module.sass'
 import { Indicator } from '../../components/Indicator'
 import { DateRangeFilter } from '../../components/Indicator/types'
-
 import { Props, State } from './types'
+import { checkDateInRange } from '../../helpers/dateHelper'
 
 export class UsersPage extends React.Component<Props, State> {
 	state: State = {
@@ -29,12 +29,18 @@ export class UsersPage extends React.Component<Props, State> {
 					{users.length > 0 && (
 						<div className={styles.menu}>
 							{users.map((user, index) => {
-								const todos = user.todos.filter(todo => todo.createAt.getDate() === today)
-								const value =
-									this.state.filter === DateRangeFilter.DAY
-										? todos.filter(todo => todo.completed).length
-										: user.todos.filter(todo => todo.completed).length
-								const total = this.state.filter === DateRangeFilter.DAY ? todos.length : user.todos.length
+								let value, total
+								if (this.state.filter === DateRangeFilter.DAY) {
+									const todos = user.todos.filter(todo => todo.createAt.getDate() === today)
+									value = todos.filter(todo => todo.completed).length
+									total = todos.length
+								}
+
+								if (this.state.filter === DateRangeFilter.WEEK) {
+									const week = user.todos.filter(todo => checkDateInRange(todo.createAt))
+									value = week.filter(todo => todo.completed).length
+									total = week.length
+								}
 
 								return (
 									<div className={styles.menuItem} key={index}>
@@ -42,7 +48,7 @@ export class UsersPage extends React.Component<Props, State> {
 											title={user.name}
 											to={`/user/${user.id}`}
 											subTitle={user.todos.length + ' todos'}
-											progress={{ value, total }}
+											progress={value && total ? { value, total } : undefined}
 										/>
 									</div>
 								)

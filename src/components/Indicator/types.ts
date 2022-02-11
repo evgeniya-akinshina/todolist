@@ -5,5 +5,5 @@ export type Props = {
 
 export enum DateRangeFilter {
 	DAY = 'day',
-	MONTH = 'month',
+	WEEK = 'week',
 }
