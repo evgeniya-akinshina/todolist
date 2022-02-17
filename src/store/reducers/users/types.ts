@@ -4,7 +4,7 @@ export type UsersState = {
 }
 
 export type User = {
-	id: number
+	id: string
 	name: string
 	username: string
 	todos: Todo[]
@@ -15,6 +15,7 @@ export type Todo = {
 	id: number
 	title: string
 	createAt: Date
+	completed: boolean
 }
 
 export enum UsersTypes {

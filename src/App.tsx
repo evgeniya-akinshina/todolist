@@ -39,7 +39,7 @@ export class App extends React.Component<Props> {
 				// const todosGroupedByUserId = groupBy(todos, 'userId')
 
 				// Because we need "createAt" field, we have to do custom groupBy algorithm
-				const todosGroupedByUserId: Record<number, Todo[]> = {}
+				const todosGroupedByUserId: Record<string, Todo[]> = {}
 
 				todos.forEach(todo => {
 					todo.createAt = randomDate()
@@ -49,7 +49,7 @@ export class App extends React.Component<Props> {
 				})
 
 				const userArray = users.map(user => ({
-					id: user.id,
+					id: user.id.toString(),
 					name: user.name,
 					username: user.username,
 					todos: todosGroupedByUserId[user.id],
@@ -61,6 +61,7 @@ export class App extends React.Component<Props> {
 			}
 		})()
 	}
+
 	render() {
 		return <Navigation />
 	}
