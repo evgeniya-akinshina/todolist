@@ -1,3 +1,4 @@
 export { HomePage } from './Home'
 export { StatisticPage } from './Statistic'
-export { TodosPage } from './Todos'
+export { UsersPage } from './Users'
+export { UserPage } from './User/container'

@@ -1,38 +1,33 @@
 import React from 'react'
 import { PageContent } from '../../components/layout/PageContent'
 import { Header } from '../../components/layout/Header'
-import { Button } from '../../components/Button/Button'
 import { MenuCard } from '../../components/MenuCard'
 import styles from './HomePage.module.sass'
+import { Button } from '../../components/Button'
+import { Props } from './types'
 
-const data = [
-	{
-		title: 'Todos',
-		subTitle: '4 todos',
-		link: 'todos',
-	},
-	{
-		title: 'Users',
-		subTitle: '4 users',
-		link: 'users',
-	},
-]
-
-export class HomePage extends React.Component {
+export class HomePage extends React.Component<Props> {
 	render() {
+		const { users } = this.props
 		return (
 			<>
 				<Header title="Jane's Profile" canGoBack={false} />
 				<PageContent>
-					<div className={styles.menu}>
-						{data.map((card, index) => (
-							<div key={index} className={styles.menuItem}>
-								<MenuCard activeLink {...card} />
+					{users.length > 0 && (
+						<div className={styles.menu}>
+							<div className={styles.menuItem}>
+								<MenuCard activeLink title='Todos' link='todos' subTitle={users[0].todos.length + ' todos'} />
 							</div>
-						))}
-					</div>
+
+							<div className={styles.menuItem}>
+								<MenuCard activeLink title='Users' link='users' subTitle={users.length + ' users'} />
+							</div>
+						</div>
+					)}
 				</PageContent>
-				<Button onClick={() => (window.location.href = '/add-new-tasks')}>+ Add new tasks</Button>
+				<Button onClick={() => (window.location.href = '/add-new-tasks')} showButton>
+					+ Add new tasks
+				</Button>
 			</>
 		)
 	}
