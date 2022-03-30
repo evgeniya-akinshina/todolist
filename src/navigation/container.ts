@@ -1,13 +1,12 @@
 import { connect } from 'react-redux'
+import { Navigation as Component } from './Navigation'
 import { RootState } from 'src/store/reducers'
 
-import { UsersPage as Component } from './UsersPage'
-
 export const mapStateToProps = (state: RootState) => ({
-	users: state.users.list,
+	id: state.users.mainUserId,
 })
 
 export const mapActionsToProps = {}
 
 export const connector = connect(mapStateToProps, mapActionsToProps)
-export const UsersPage = connector(Component)
+export const Navigation = connector(Component)

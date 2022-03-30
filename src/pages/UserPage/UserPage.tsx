@@ -15,9 +15,9 @@ export class UserPage extends React.Component<Props, {}> {
 						<Header title={user.name} subTitle={user.todos.length + ' todos'} canGoBack />
 
 						<PageContent>
-							{user.todos.map(todo => {
+							{user.todos.map((todo, index) => {
 								return (
-									<div className={styles.todos}>
+									<div className={styles.todos} key={index}>
 										<p>{`${todo.createAt.toDateString()}`}</p>
 										<p>{`${todo.title}`}</p>
 									</div>
