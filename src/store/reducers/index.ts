@@ -1,7 +1,7 @@
 import { combineReducers, Reducer } from 'redux'
 import { CommonActions, CommonActionTypes, LogoutAction } from './types'
 import { UsersActions, usersReducer } from './users'
-import { initialState as userReducerInitiaState } from './users/reducer'
+import { initialState as userReducerInitialState } from './users/reducer'
 
 const allReducers = combineReducers({
 	users: usersReducer,
@@ -12,7 +12,7 @@ export type RootActions = UsersActions | CommonActions
 
 export const rootReducer: Reducer<RootState, RootActions> = (state, actions) => {
 	if ((actions.type as any) === CommonActionTypes.LOGOUT) {
-		if ((actions as LogoutAction).payload) {
+		if ((actions as LogoutAction).payload.withReset) {
 			return allReducers(undefined, actions)
 		}
 
@@ -20,7 +20,7 @@ export const rootReducer: Reducer<RootState, RootActions> = (state, actions) => 
 
 		state = {
 			users: {
-				...userReducerInitiaState,
+				...userReducerInitialState,
 				list: users.list,
 			},
 		}

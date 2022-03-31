@@ -4,7 +4,9 @@ export enum CommonActionTypes {
 
 export type LogoutAction = {
 	type: CommonActionTypes.LOGOUT
-	payload: boolean
+	payload: {
+		withReset: boolean
+	}
 }
 
 export type CommonActions = LogoutAction

@@ -7,7 +7,8 @@ export type Props = ConnectedProps<typeof connector> & WithRouter & {}
 
 export type State = {
 	userId: string
-	userArray: ServerUser[] | User[]
+	hasPreviousUsers: boolean
+	serverUsers: ServerUser[] | User[]
 }
 
 export type ServerUser = {

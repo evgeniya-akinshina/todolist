@@ -1,8 +1,10 @@
 import * as Types from './types'
 
-const logout = (payload: Types.LogoutAction['payload']): Types.LogoutAction => ({
+const logout = (withReset: boolean = false): Types.LogoutAction => ({
 	type: Types.CommonActionTypes.LOGOUT,
-	payload,
+	payload: {
+		withReset,
+	},
 })
 
 export const actions = {
