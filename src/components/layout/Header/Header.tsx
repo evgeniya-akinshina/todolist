@@ -16,9 +16,14 @@ export const Header = ({ canGoBack, title, subTitle }: Props) => {
 	const { commonActions } = useActions()
 
 	const logout = () => {
-		if (window.confirm('Do you want to completely clean up the data?')) {
-			commonActions.logout(true)
-		} else {
+		if (process.env.REACT_APP_FLOW === 'true') {
+			if (window.confirm('Do you want to completely clean up the data?')) {
+				commonActions.logout(true)
+			} else {
+				commonActions.logout(false)
+			}
+		}
+		if (process.env.REACT_APP_FLOW === 'false') {
 			commonActions.logout(false)
 		}
 		navigate('/')
@@ -41,11 +46,7 @@ export const Header = ({ canGoBack, title, subTitle }: Props) => {
 					<img className={styles.ava} src={ava} alt='#' />
 					<div className={styles.online} />
 				</Link>
-				<ButtonLogout
-					logoutButton={() =>
-						process.env.REACT_APP_FLOW === 'true' ? logout() : commonActions.logout(false) && navigate('/')
-					}
-				/>
+				<ButtonLogout logoutButton={() => logout()} />
 			</div>
 
 			{title && <Title title={title} subTitle={subTitle} />}
