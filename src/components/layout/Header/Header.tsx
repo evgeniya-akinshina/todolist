@@ -7,10 +7,6 @@ import { Props } from './types'
 import { ButtonLogout } from 'src/components/ButtonLogout'
 import { useActions } from 'src/hooks/useActions'
 
-// REACT_APP_LOGOUT_FLOW=true npm start
-// or
-// REACT_APP_LOGOUT_FLOW=false npm start
-
 export const Header = ({ canGoBack, title, subTitle }: Props) => {
 	const navigate = useNavigate()
 	const { commonActions } = useActions()
