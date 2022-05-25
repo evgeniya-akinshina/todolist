@@ -1,4 +1,3 @@
-import React from 'react'
 import { Params, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { NavigateFunction } from 'react-router'
 import { ConnectedComponent } from 'react-redux'

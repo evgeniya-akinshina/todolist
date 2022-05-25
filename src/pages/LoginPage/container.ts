@@ -1,19 +1,24 @@
 import { connect } from 'react-redux'
-
-import { TodosPage as Component } from './TodosPage'
 import { usersActions } from '../../store/reducers/users'
-import { getMainUsers } from 'src/store/reducers/users/selectors'
+import { Component } from './LoginPage'
+import { withRouter } from '../../HOCs/withRouter'
 import { RootState } from 'src/store/reducers'
 
 export const mapStateToProps = (state: RootState) => ({
-	user: getMainUsers(state),
+	users: state.users.list,
+	loading: state.users.loading,
+	id: state.users.mainUserId,
 })
 
 export const mapActionsToProps = {
 	fetchUsersStart: usersActions.fetchUsersStart,
 	fetchUsersSuccess: usersActions.fetchUsersSuccess,
 	fetchUsersFailure: usersActions.fetchUsersFailure,
+	setUsersId: usersActions.setUsersId,
+	fetchTodosStart: usersActions.fetchTodosStart,
+	fetchTodosSuccess: usersActions.fetchTodosSuccess,
+	fetchTodosFailure: usersActions.fetchTodosFailure,
 }
 
 export const connector = connect(mapStateToProps, mapActionsToProps)
-export const TodosPage = connector(Component)
+export const LoginPage = withRouter(connector(Component))
