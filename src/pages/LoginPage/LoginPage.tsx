@@ -1,17 +1,21 @@
-import axios from 'axios'
 import React from 'react'
 import { Loader } from '../../components/Loader'
-import { randomDate } from '../../helpers/helpers'
-import { Todo } from '../../store/reducers/users'
 import styles from './LoginPage.module.sass'
-import { Props, ServerUser, State } from './types'
+import { Props, State } from './types'
 import { requestsWithDelay } from 'src/helpers/request'
+import { UserController } from 'src/controllers/user-controller'
+import { TodoController } from 'src/controllers/todos-controller'
+import { randomDate } from 'src/helpers/helpers'
+import { ServerUser } from 'src/controllers/user-controller/types'
+import { Todo } from 'src/store/reducers/users'
+import { UserFormatter } from 'src/controllers/user-controller/user.formatter'
 
 export class Component extends React.Component<Props, State> {
 	state: State = {
 		userId: '',
 		hasPreviousUsers: !!this.props.users.length,
 		serverUsers: [],
+		serverTodos: [],
 	}
 
 	get users() {
@@ -25,9 +29,7 @@ export class Component extends React.Component<Props, State> {
 	getUsers = async () => {
 		this.props.fetchUsersStart()
 		try {
-			const [serverUsers] = await requestsWithDelay(
-				axios.get<ServerUser[]>('https://jsonplaceholder.typicode.com/users').then(res => res.data),
-			)
+			const [serverUsers] = await requestsWithDelay(UserController.fetchUsers().then(res => res.data))
 
 			this.setState({ serverUsers })
 			this.props.fetchUsersSuccess()
@@ -54,15 +56,14 @@ export class Component extends React.Component<Props, State> {
 		this.props.fetchTodosStart()
 
 		try {
-			const [todos] = await requestsWithDelay(
-				axios.get<Todo[]>('https://jsonplaceholder.typicode.com/todos').then(res => res.data),
-			)
+			const [todos] = await requestsWithDelay(TodoController.fetchTodos().then(res => res.data))
 
 			// Lodash
 			// const todosGroupedByUserId = groupBy(todos, 'userId')
 
 			// Custom algorithm
 			const todosGroupedByUserId: Record<ServerUser['id'], Todo[]> = {}
+
 			todos.forEach(todo => {
 				todo.createAt = randomDate()
 				todosGroupedByUserId[todo.userId]
@@ -70,12 +71,7 @@ export class Component extends React.Component<Props, State> {
 					: (todosGroupedByUserId[todo.userId] = [todo])
 			})
 
-			const userArray = this.state.serverUsers.map(user => ({
-				id: user.id.toString(),
-				name: user.name,
-				username: user.username,
-				todos: todosGroupedByUserId[user.id],
-			}))
+			const userArray = UserFormatter.afterfetchUsers()
 
 			this.props.fetchTodosSuccess(userArray)
 			this.props.router.navigate('/home')
